@@ -6,6 +6,10 @@ on:
     - cron: "0 2 * * 6"
   workflow_dispatch:
 
+concurrency:
+  group: ics-calendar-update
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -34,5 +38,10 @@ jobs:
           else
             DATE=$(date -u +%Y-%m-%d)
             git commit -m "自动更新中国节假日日历 ${DATE}"
-            git push
+            git pull --rebase origin main
+            git push || {
+              echo "Push rejected; rebasing onto origin/main and retrying once."
+              git pull --rebase origin main
+              git push
+            }
           fi

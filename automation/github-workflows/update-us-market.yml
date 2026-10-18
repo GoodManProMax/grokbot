@@ -1,0 +1,40 @@
+name: Update US Market ICS
+
+on:
+  schedule:
+    # Saturday 02:00 UTC = Saturday 10:00 Asia/Shanghai
+    - cron: "0 2 * * 6"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Regenerate US market ICS
+        env:
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+        run: python scripts/update_us_market.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add calendars/us-market-events.ics
+          if git diff --staged --quiet; then
+            echo "No content change; skip commit."
+          else
+            DATE=$(date -u +%Y-%m-%d)
+            git commit -m "自动更新美股日历 ${DATE}"
+            git push
+          fi

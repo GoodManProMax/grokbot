@@ -15,4 +15,8 @@ git commit -m "启用中国节假日与美股日历周末自动更新 Actions"
 git push origin main
 ```
 
-Cron (both): `0 2 * * 6` (Saturday 02:00 UTC = Saturday 10:00 Asia/Shanghai)
+Crons are staggered on Saturday so the three calendars do not start in the same minute. All of them use concurrency group `ics-calendar-update` with `cancel-in-progress: false` (overlap queues, it does not cancel).
+
+- China statutory holiday: `0 2 * * 6` (02:00 UTC / 10:00 Asia/Shanghai)
+- China festivals and solar terms: `20 2 * * 6` (02:20 UTC / 10:20 Asia/Shanghai), workflow only under `.github/workflows/`
+- US market: `40 2 * * 6` (02:40 UTC / 10:40 Asia/Shanghai)

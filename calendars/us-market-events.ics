@@ -647,7 +647,7 @@ SUMMARY:📈 Marvell MRVL 财报（预估·盘后｜MVLL底层）
 DESCRIPTION:美股盘后财报窗口（具体时间以公司 IR 为准）
  。日期为预估，可能调整，请以公司公告为准。 Marvell 
  下一财报预估约 2026-12-01 盘后（yfinance/MarketBeat；亦有 12-
- 02）。林童持仓 MVLL（GRANITE 2× MRVL）无独立财报，日历按
+ 02）。MVLL 为 MRVL 相关杠杆产品，无独立财报，日历按
  底层 MRVL 记录。请以 Marvell IR 为准。
 DTSTART;TZID=America/New_York:20261201T160000
 DTEND;TZID=America/New_York:20261201T170000

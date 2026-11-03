@@ -486,24 +486,6 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:earn-SPCX-20261103@us-market-events
-DTSTAMP:20261017T100208Z
-SUMMARY:📈 SpaceX SPCX 财报（预估·盘后）
-DESCRIPTION:美股盘后财报窗口（具体时间以公司 IR 为准）
- 。日期为预估，可能调整，请以公司公告为准。 多家日
- 历指向约 2026-11-03 盘后；亦有约 11-17 说法。上市不久、
- 日期波动大，请以公司 IR/官方公告为准。
-DTSTART;TZID=America/New_York:20261103T160000
-DTEND;TZID=America/New_York:20261103T170000
-CATEGORIES:EARNINGS,SPCX
-STATUS:CONFIRMED
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:📈 SpaceX SPCX 财报（预估·盘后）
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:earn-QCOM-20261104@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:📈 Qualcomm QCOM 财报 Q4 FY2026（盘后·确认）
@@ -521,19 +503,18 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:earn-RKLB-20261109@us-market-events
-DTSTAMP:20261017T100208Z
-SUMMARY:📈 Rocket Lab RKLB 财报（预估·盘后）
-DESCRIPTION:美股盘后财报窗口（具体时间以公司 IR 为准）
- 。日期为预估，可能调整，请以公司公告为准。 火箭实
- 验室 Q3 预估约 2026-11-09 盘后（亦有 11-12/11-16 说法）。公
- 司尚未正式确认，请以 Rocket Lab IR 为准。
+DTSTAMP:20261103T000135Z
+SUMMARY:📈 Rocket Lab RKLB 财报 Q3 2026（盘后·确认）
+DESCRIPTION:Rocket Lab IR 确认：2026-11-09（周一）盘后发布 Q3 2026；电话会 5 p.m. ET / 2 p.m. PT
+ 。来源：Rocket Lab IR（2026-10-20 公告）https://investors.rocketlabcorp.com/
+ news-releases/news-release-details/rocket-lab-announces-date-third-quarter-2026-financial-results
 DTSTART;TZID=America/New_York:20261109T160000
-DTEND;TZID=America/New_York:20261109T170000
+DTEND;TZID=America/New_York:20261109T173000
 CATEGORIES:EARNINGS,RKLB
 STATUS:CONFIRMED
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:📈 Rocket Lab RKLB 财报（预估·盘后）
+DESCRIPTION:📈 Rocket Lab RKLB 财报 Q3 2026（盘后·确认）
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT

@@ -639,20 +639,22 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:earn-MRVL-20261201@us-market-events
-DTSTAMP:20261017T100208Z
-SUMMARY:📈 Marvell MRVL 财报（预估·盘后｜MVLL底层）
-DESCRIPTION:美股盘后财报窗口（具体时间以公司 IR 为准）
- 。日期为预估，可能调整，请以公司公告为准。 Marvell 
- 下一财报预估约 2026-12-01 盘后（yfinance/MarketBeat；亦有 12-
- 02）。MVLL 为 MRVL 相关杠杆产品，无独立财报，日历按
- 底层 MRVL 记录。请以 Marvell IR 为准。
+DTSTAMP:20261112T001255Z
+SUMMARY:📈 Marvell MRVL 财报 Q3 FY2027（盘后·确认｜MVLL底层）
+DESCRIPTION:Marvell IR（2026-11-06 公告）：2026-12-01（周二）发
+ 布 Q3 FY2027；电话会 1:30 p.m. PT（4:30 p.m. ET）。来源：https:
+ //investor.marvell.com/news-events/press-releases/detail/1041/marvell-tech
+ nology-inc-announces-conference-call-to-review-third-quarter-of-fiscal-yea
+ r-2027-financial-results。MVLL 为 MRVL 相关杠杆产品，无独立财
+ 报，日历按底层 MRVL 记录。
 DTSTART;TZID=America/New_York:20261201T160000
-DTEND;TZID=America/New_York:20261201T170000
+DTEND;TZID=America/New_York:20261201T173000
 CATEGORIES:EARNINGS,MRVL,MVLL
 STATUS:CONFIRMED
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:📈 Marvell MRVL 财报（预估·盘后｜MVLL底层）
+DESCRIPTION:📈 Marvell MRVL 财报 Q3 FY2027（盘后·确认｜MVLL底
+ 层）
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT

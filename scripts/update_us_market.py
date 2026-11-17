@@ -104,8 +104,8 @@ def observed(d: date) -> date:
     return d
 
 
-def nyse_holidays(year: int) -> list[tuple[date, str, str]]:
-    """Return (date, uid_slug, summary) for full closes and early closes."""
+def nyse_holidays(year: int) -> list[tuple[date, str, str, str]]:
+    """Return (date, uid_slug, summary, kind) for full closes and early closes."""
     items: list[tuple[date, str, str, str]] = []
     # full closes
     items.append((observed(date(year, 1, 1)), f"nyse-newyear-{year}", "🏖 New Year’s Day 元旦（美股休市）", "full"))
@@ -120,10 +120,11 @@ def nyse_holidays(year: int) -> list[tuple[date, str, str]]:
     thanks = nth_weekday(year, 11, 3, 4)
     items.append((thanks, f"nyse-thanksgiving-{year}", "🏖 Thanksgiving 感恩节（美股休市）", "full"))
     items.append((thanks + timedelta(days=1), f"nyse-thanksgiving-fri-{year}", "🏖 Thanksgiving Friday（美股早收）", "early"))
-    items.append((observed(date(year, 12, 25)), f"nyse-christmas-{year}", "🏖 Christmas 圣诞节（美股休市·观察日）", "full"))
-    # Christmas Eve early close when weekday
+    christmas = observed(date(year, 12, 25))
+    items.append((christmas, f"nyse-christmas-{year}", "🏖 Christmas 圣诞节（美股休市·观察日）", "full"))
+    # Weekday Christmas Eve is an early close, unless that day is already the observed full close.
     eve = date(year, 12, 24)
-    if eve.weekday() < 5:
+    if eve.weekday() < 5 and eve != christmas:
         items.append((eve, f"nyse-christmas-eve-{year}", "🏖 Christmas Eve（美股早收）", "early"))
 
     out = []
@@ -199,12 +200,45 @@ def make_timed_event(
     return "\n".join(lines)
 
 
+def vevent_start_date(block: str) -> date | None:
+    match = re.search(r"^DTSTART(?:;[^:]*)?:(\d{8})", block, re.M)
+    if not match:
+        return None
+    return datetime.strptime(match.group(1), "%Y%m%d").date()
+
+
+def holiday_dates(events: dict[str, str], uid_prefix: str) -> set[date]:
+    found: set[date] = set()
+    for uid, block in events.items():
+        if not uid.startswith(uid_prefix):
+            continue
+        start = vevent_start_date(block)
+        if start is not None:
+            found.add(start)
+    return found
+
+
+def drop_nyse_overlapping_hol(events: dict[str, str], covered: set[date]) -> None:
+    """Drop later nyse- copies when an earlier hol- event already covers that day."""
+    for uid in list(events):
+        if not uid.startswith("nyse-"):
+            continue
+        start = vevent_start_date(events[uid])
+        if start in covered:
+            del events[uid]
+
+
 def refresh_holidays(events: dict[str, str]) -> int:
+    # hol- is the kept market-holiday set. Do not write a second nyse- event on the same day.
+    covered = holiday_dates(events, "hol-")
+    drop_nyse_overlapping_hol(events, covered)
     today = date.today()
     years = {today.year, today.year + 1}
     n = 0
     for y in sorted(years):
         for d0, slug, summary, kind in nyse_holidays(y):
+            if d0 in covered:
+                continue
             uid = f"{slug}@us-market-events"
             if kind == "early":
                 desc = "NYSE 早收（通常 13:00 ET）。日期按常规日历推算，请以交易所公告为准。"

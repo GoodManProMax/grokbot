@@ -29,6 +29,8 @@ jobs:
           python-version: "3.12"
 
       - name: Regenerate US market ICS
+        # Holidays, earnings, and official macro releases
+        # (CPI/core CPI, PCE/core PCE, employment, GDP, retail, claims, ISM, FOMC).
         env:
           FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
         run: python scripts/update_us_market.py

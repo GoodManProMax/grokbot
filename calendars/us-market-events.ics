@@ -3,8 +3,10 @@ VERSION:2.0
 PRODID:-//Grok Bot//US Market Events//ZH
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:美股大事件（PPI/CPI/FOMC/科技财报）
-X-WR-CALDESC:FOMC、CPI、PPI、主要科技财报与美股休市日。宏观日期来自美联储/BLS；财报日期多为预估，请以公司公告为准。时区 America/New_York。
+X-WR-CALNAME:美股大事件（CPI/PCE/非农/FOMC/科技财报）
+X-WR-CALDESC:FOMC、CPI/核心CPI、PCE/核心PCE、非农、GDP、PPI、零售销售、初请失业金、ISM、主要科技财报与美股
+ 休市日。宏观日期来自美联储/BLS/BEA/Census/DOL/ISM 官方日程；未单独公布的日期标为暂定。财报日期多为预估，请以公司公告为准
+ 。时区 America/New_York。
 X-WR-TIMEZONE:America/New_York
 REFRESH-INTERVAL;VALUE=DURATION:P1D
 BEGIN:VTIMEZONE
@@ -144,7 +146,7 @@ BEGIN:VEVENT
 UID:ppi-20260910@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 PPI 生产者物价指数（August 2026）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。常被
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。常被
  视作 CPI 前瞻。来源：https://www.bls.gov/schedule/news_release/ppi
  .htm
 DTSTART;TZID=America/New_York:20260910T083000
@@ -178,7 +180,7 @@ BEGIN:VEVENT
 UID:cpi-20260911@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 CPI 消费者物价指数（August 2026）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。核心
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。核心
  通胀关键数据，影响加息预期与成长股估值。来源：https
  ://www.bls.gov/schedule/news_release/cpi.htm
 DTSTART;TZID=America/New_York:20260911T083000
@@ -228,7 +230,7 @@ BEGIN:VEVENT
 UID:cpi-20261014@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 CPI 消费者物价指数（September 2026）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。核心
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。核心
  通胀关键数据，影响加息预期与成长股估值。来源：https
  ://www.bls.gov/schedule/news_release/cpi.htm
 DTSTART;TZID=America/New_York:20261014T083000
@@ -245,7 +247,7 @@ BEGIN:VEVENT
 UID:ppi-20261015@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 PPI 生产者物价指数（September 2026）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。常被
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。常被
  视作 CPI 前瞻。来源：https://www.bls.gov/schedule/news_release/ppi
  .htm
 DTSTART;TZID=America/New_York:20261015T083000
@@ -523,7 +525,7 @@ BEGIN:VEVENT
 UID:cpi-20261110@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 CPI 消费者物价指数（October 2026）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。核心
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。核心
  通胀关键数据，影响加息预期与成长股估值。来源：https
  ://www.bls.gov/schedule/news_release/cpi.htm
 DTSTART;TZID=America/New_York:20261110T083000
@@ -540,7 +542,7 @@ BEGIN:VEVENT
 UID:ppi-20261113@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 PPI 生产者物价指数（October 2026）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。常被
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。常被
  视作 CPI 前瞻。来源：https://www.bls.gov/schedule/news_release/ppi
  .htm
 DTSTART;TZID=America/New_York:20261113T083000
@@ -567,6 +569,57 @@ STATUS:CONFIRMED
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:📈 NVIDIA 财报 Q3 FY2027（盘后·确认）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:gdp-20261125-second@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国GDP（2026年Q3修正值）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA GD
+ P 修正值（GDP (Second Estimate) and Corporate Profits\, 3rd Quarter 2026）。来源
+ ：https://www.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20261125T083000
+DTEND;TZID=America/New_York:20261125T093000
+CATEGORIES:MACRO,GDP
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国GDP（2026年Q3修正值）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-20261125@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国PCE（2026年10月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20261125T083000
+DTEND;TZID=America/New_York:20261125T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国PCE（2026年10月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-core-20261125@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国核心PCE（2026年10月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20261125T083000
+DTEND;TZID=America/New_York:20261125T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国核心PCE（2026年10月）
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
@@ -608,6 +661,74 @@ STATUS:CONFIRMED
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:📈 Marvell MRVL 财报（预估·盘后｜MVLL底层）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ism-mfg-20261201@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国ISM制造业PMI（2026年11月）
+DESCRIPTION:官方发布时间 10:00 America/New_York。ISM 日历表列出的发布日（制造业为当月第一个工作日，服务业为
+ 第三个工作日；假日顺延以表内日期为准）。来源：https://www.ismworld.org/supply-management-news-a
+ nd-reports/reports/rob-report-calendar/
+DTSTART;TZID=America/New_York:20261201T100000
+DTEND;TZID=America/New_York:20261201T110000
+CATEGORIES:MACRO,ISM
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国ISM制造业PMI（2026年11月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ism-svc-20261203@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国ISM服务业PMI（2026年11月）
+DESCRIPTION:官方发布时间 10:00 America/New_York。ISM 日历表列出的发布日（制造业为当月第一个工作日，服务业为
+ 第三个工作日；假日顺延以表内日期为准）。来源：https://www.ismworld.org/supply-management-news-a
+ nd-reports/reports/rob-report-calendar/
+DTSTART;TZID=America/New_York:20261203T100000
+DTEND;TZID=America/New_York:20261203T110000
+CATEGORIES:MACRO,ISM
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国ISM服务业PMI（2026年11月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20261203@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2026年11月28日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20261203T083000
+DTEND;TZID=America/New_York:20261203T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2026年11月28日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:empsit-20261204@us-market-events
+DTSTAMP:20261125T100026Z
+SUMMARY:🇺🇸 美国非农与失业率（2026年11月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BLS Em
+ ployment Situation（非农就业、失业率）。来源：https://www.bls.gov/schedule/news_releas
+ e/empsit.htm
+DTSTART;TZID=America/New_York:20261204T083000
+DTEND;TZID=America/New_York:20261204T093000
+CATEGORIES:MACRO,EMPLOYMENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国非农与失业率（2026年11月）
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
@@ -665,7 +786,7 @@ BEGIN:VEVENT
 UID:cpi-20261210@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 CPI 消费者物价指数（November 2026）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。核心
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。核心
  通胀关键数据，影响加息预期与成长股估值。来源：https
  ://www.bls.gov/schedule/news_release/cpi.htm
 DTSTART;TZID=America/New_York:20261210T083000
@@ -679,10 +800,44 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:claims-20261210@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2026年12月5日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20261210T083000
+DTEND;TZID=America/New_York:20261210T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2026年12月5日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cpi-core-20261210@us-market-events
+DTSTAMP:20261125T100026Z
+SUMMARY:🇺🇸 美国核心CPI（2026年11月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。核心 CPI
+  与整体 CPI 同一份 BLS 新闻稿，不单独排期。来源：https://www.bls.gov/schedule/news_release/
+ cpi.htm
+DTSTART;TZID=America/New_York:20261210T083000
+DTEND;TZID=America/New_York:20261210T093000
+CATEGORIES:MACRO,CPI
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国核心CPI（2026年11月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:ppi-20261215@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 PPI 生产者物价指数（November 2026）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。常被
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。常被
  视作 CPI 前瞻。来源：https://www.bls.gov/schedule/news_release/ppi
  .htm
 DTSTART;TZID=America/New_York:20261215T083000
@@ -692,6 +847,40 @@ STATUS:CONFIRMED
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:🇺🇸 PPI 生产者物价指数（November 2026）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:retail-20261216@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国零售销售（2026年11月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。Census
+  提前零售与餐饮销售（Advance Monthly Retail Trade）。来源：https://www.census.gov/retai
+ l/release_schedule.html
+DTSTART;TZID=America/New_York:20261216T083000
+DTEND;TZID=America/New_York:20261216T093000
+CATEGORIES:MACRO,RETAIL
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国零售销售（2026年11月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20261217@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2026年12月12日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20261217T083000
+DTEND;TZID=America/New_York:20261217T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2026年12月12日）
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
@@ -713,6 +902,58 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:gdp-20261223-third@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国GDP（2026年Q3终值）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA GD
+ P 终值（GDP (Third Estimate)\, Industries\, Corporate Profits\, State GDP\,
+  and State Personal Income\, 3rd Quarter 2026）。来源：https://www.bea.gov/ne
+ ws/schedule
+DTSTART;TZID=America/New_York:20261223T083000
+DTEND;TZID=America/New_York:20261223T093000
+CATEGORIES:MACRO,GDP
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国GDP（2026年Q3终值）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-20261223@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国PCE（2026年11月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20261223T083000
+DTEND;TZID=America/New_York:20261223T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国PCE（2026年11月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-core-20261223@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国核心PCE（2026年11月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20261223T083000
+DTEND;TZID=America/New_York:20261223T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国核心PCE（2026年11月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:hol-2026-12-24@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🏖 Christmas Eve（美股早收）
@@ -722,6 +963,23 @@ DTSTART;VALUE=DATE:20261224
 DTEND;VALUE=DATE:20261225
 CATEGORIES:HOLIDAY
 STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20261224@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2026年12月19日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20261224T083000
+DTEND;TZID=America/New_York:20261224T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2026年12月19日）
+TRIGGER:-P1D
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hol-2026-12-25@us-market-events
@@ -735,6 +993,40 @@ CATEGORIES:HOLIDAY
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
+UID:fomc-minutes-20261209@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🏛️ FOMC 会议纪要（2026年12月决议·暂定）
+DESCRIPTION:美联储官网写明：纪要在政策决定日后三周发布，通常 14:00 ET。此具体日期尚未在 FOMC 日历单独列出，遇假日可能改
+ 期，以 federalreserve.gov 为准。来源：https://www.federalreserve.gov/monetarypoli
+ cy/fomccalendars.htm
+DTSTART;TZID=America/New_York:20261230T140000
+DTEND;TZID=America/New_York:20261230T150000
+CATEGORIES:MACRO,FOMC_MINUTES
+STATUS:TENTATIVE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🏛️ FOMC 会议纪要（2026年12月决议·暂定）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20261231@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2026年12月26日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20261231T083000
+DTEND;TZID=America/New_York:20261231T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2026年12月26日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:hol-2027-01-01@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🏖 New Year’s Day 元旦（美股休市）
@@ -746,10 +1038,44 @@ CATEGORIES:HOLIDAY
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
+UID:claims-20270107@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年1月2日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270107T083000
+DTEND;TZID=America/New_York:20270107T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年1月2日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:empsit-20270108@us-market-events
+DTSTAMP:20261125T100026Z
+SUMMARY:🇺🇸 美国非农与失业率（2026年12月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BLS Em
+ ployment Situation（非农就业、失业率）。来源：https://www.bls.gov/schedule/news_releas
+ e/empsit.htm
+DTSTART;TZID=America/New_York:20270108T083000
+DTEND;TZID=America/New_York:20270108T093000
+CATEGORIES:MACRO,EMPLOYMENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国非农与失业率（2026年12月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:cpi-20270113@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 CPI 消费者物价指数（December 2026）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。核心
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。核心
  通胀关键数据，影响加息预期与成长股估值。来源：https
  ://www.bls.gov/schedule/news_release/cpi.htm 2027 日程来源：White Hou
  se PFEI / BLS。
@@ -764,10 +1090,27 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:cpi-core-20270113@us-market-events
+DTSTAMP:20261125T100026Z
+SUMMARY:🇺🇸 美国核心CPI（2026年12月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。核心 CPI
+  与整体 CPI 同一份 BLS 新闻稿，不单独排期。来源：https://www.bls.gov/schedule/news_release/
+ cpi.htm
+DTSTART;TZID=America/New_York:20270113T083000
+DTEND;TZID=America/New_York:20270113T093000
+CATEGORIES:MACRO,CPI
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国核心CPI（2026年12月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:ppi-20270114@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 PPI 生产者物价指数（December 2026）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。常被
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。常被
  视作 CPI 前瞻。来源：https://www.bls.gov/schedule/news_release/ppi
  .htm 2027 日程来源：White House PFEI / BLS。
 DTSTART;TZID=America/New_York:20270114T083000
@@ -777,6 +1120,40 @@ STATUS:CONFIRMED
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:🇺🇸 PPI 生产者物价指数（December 2026）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270114@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年1月9日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270114T083000
+DTEND;TZID=America/New_York:20270114T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年1月9日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:retail-20270115@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国零售销售（2026年12月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。Census
+  提前零售与餐饮销售（Advance Monthly Retail Trade）。来源：https://www.census.gov/retai
+ l/release_schedule.html
+DTSTART;TZID=America/New_York:20270115T083000
+DTEND;TZID=America/New_York:20270115T093000
+CATEGORIES:MACRO,RETAIL
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国零售销售（2026年12月）
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
@@ -805,6 +1182,23 @@ STATUS:CONFIRMED
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:📈 Netflix 财报（预估·盘后）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270121@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年1月16日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270121T083000
+DTEND;TZID=America/New_York:20270121T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年1月16日）
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
@@ -910,6 +1304,74 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:gdp-20270128-advance@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国GDP（2026年Q4初值）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA GD
+ P 初值（GDP (Advance Estimate)\, 4th Quarter and Year 2026）。来源：https://www.
+ bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20270128T083000
+DTEND;TZID=America/New_York:20270128T093000
+CATEGORIES:MACRO,GDP
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国GDP（2026年Q4初值）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-20270128@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国PCE（2026年12月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20270128T083000
+DTEND;TZID=America/New_York:20270128T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国PCE（2026年12月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-core-20270128@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国核心PCE（2026年12月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20270128T083000
+DTEND;TZID=America/New_York:20270128T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国核心PCE（2026年12月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270128@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年1月23日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270128T083000
+DTEND;TZID=America/New_York:20270128T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年1月23日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:earn-AMD-20270202@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:📈 AMD 财报（预估·盘后）
@@ -961,10 +1423,44 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:claims-20270204@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年1月30日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270204T083000
+DTEND;TZID=America/New_York:20270204T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年1月30日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:empsit-20270205@us-market-events
+DTSTAMP:20261125T100026Z
+SUMMARY:🇺🇸 美国非农与失业率（2027年1月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BLS Em
+ ployment Situation（非农就业、失业率）。来源：https://www.bls.gov/schedule/news_releas
+ e/empsit.htm
+DTSTART;TZID=America/New_York:20270205T083000
+DTEND;TZID=America/New_York:20270205T093000
+CATEGORIES:MACRO,EMPLOYMENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国非农与失业率（2027年1月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:cpi-20270211@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 CPI 消费者物价指数（January 2027）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。核心
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。核心
  通胀关键数据，影响加息预期与成长股估值。来源：https
  ://www.bls.gov/schedule/news_release/cpi.htm 2027 日程来源：White Hou
  se PFEI / BLS。
@@ -979,10 +1475,44 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:claims-20270211@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年2月6日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270211T083000
+DTEND;TZID=America/New_York:20270211T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年2月6日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cpi-core-20270211@us-market-events
+DTSTAMP:20261125T100026Z
+SUMMARY:🇺🇸 美国核心CPI（2027年1月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。核心 CPI
+  与整体 CPI 同一份 BLS 新闻稿，不单独排期。来源：https://www.bls.gov/schedule/news_release/
+ cpi.htm
+DTSTART;TZID=America/New_York:20270211T083000
+DTEND;TZID=America/New_York:20270211T093000
+CATEGORIES:MACRO,CPI
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国核心CPI（2027年1月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:ppi-20270212@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 PPI 生产者物价指数（January 2027）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。常被
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。常被
  视作 CPI 前瞻。来源：https://www.bls.gov/schedule/news_release/ppi
  .htm 2027 日程来源：White House PFEI / BLS。
 DTSTART;TZID=America/New_York:20270212T083000
@@ -1007,6 +1537,57 @@ CATEGORIES:HOLIDAY
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
+UID:retail-20270217@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国零售销售（2027年1月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。Census
+  提前零售与餐饮销售（Advance Monthly Retail Trade）。来源：https://www.census.gov/retai
+ l/release_schedule.html
+DTSTART;TZID=America/New_York:20270217T083000
+DTEND;TZID=America/New_York:20270217T093000
+CATEGORIES:MACRO,RETAIL
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国零售销售（2027年1月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fomc-minutes-20270127@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🏛️ FOMC 会议纪要（2027年1月决议·暂定）
+DESCRIPTION:美联储官网写明：纪要在政策决定日后三周发布，通常 14:00 ET。此具体日期尚未在 FOMC 日历单独列出，遇假日可能改
+ 期，以 federalreserve.gov 为准。来源：https://www.federalreserve.gov/monetarypoli
+ cy/fomccalendars.htm
+DTSTART;TZID=America/New_York:20270217T140000
+DTEND;TZID=America/New_York:20270217T150000
+CATEGORIES:MACRO,FOMC_MINUTES
+STATUS:TENTATIVE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🏛️ FOMC 会议纪要（2027年1月决议·暂定）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270218@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年2月13日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270218T083000
+DTEND;TZID=America/New_York:20270218T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年2月13日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:earn-NVDA-20270224@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:📈 NVIDIA 财报（预估·盘后）
@@ -1023,10 +1604,112 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:gdp-20270225-second@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国GDP（2026年Q4修正值）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA GD
+ P 修正值（GDP (Second Estimate)\, 4th Quarter and Year 2026）。来源：https://www.
+ bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20270225T083000
+DTEND;TZID=America/New_York:20270225T093000
+CATEGORIES:MACRO,GDP
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国GDP（2026年Q4修正值）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-20270225@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国PCE（2027年1月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20270225T083000
+DTEND;TZID=America/New_York:20270225T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国PCE（2027年1月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-core-20270225@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国核心PCE（2027年1月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20270225T083000
+DTEND;TZID=America/New_York:20270225T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国核心PCE（2027年1月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270225@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年2月20日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270225T083000
+DTEND;TZID=America/New_York:20270225T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年2月20日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270304@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年2月27日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270304T083000
+DTEND;TZID=America/New_York:20270304T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年2月27日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:empsit-20270305@us-market-events
+DTSTAMP:20261125T100026Z
+SUMMARY:🇺🇸 美国非农与失业率（2027年2月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BLS Em
+ ployment Situation（非农就业、失业率）。来源：https://www.bls.gov/schedule/news_releas
+ e/empsit.htm
+DTSTART;TZID=America/New_York:20270305T083000
+DTEND;TZID=America/New_York:20270305T093000
+CATEGORIES:MACRO,EMPLOYMENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国非农与失业率（2027年2月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:cpi-20270310@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 CPI 消费者物价指数（February 2027）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。核心
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。核心
  通胀关键数据，影响加息预期与成长股估值。来源：https
  ://www.bls.gov/schedule/news_release/cpi.htm 2027 日程来源：White Hou
  se PFEI / BLS。
@@ -1041,10 +1724,44 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:cpi-core-20270310@us-market-events
+DTSTAMP:20261125T100026Z
+SUMMARY:🇺🇸 美国核心CPI（2027年2月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。核心 CPI
+  与整体 CPI 同一份 BLS 新闻稿，不单独排期。来源：https://www.bls.gov/schedule/news_release/
+ cpi.htm
+DTSTART;TZID=America/New_York:20270310T083000
+DTEND;TZID=America/New_York:20270310T093000
+CATEGORIES:MACRO,CPI
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国核心CPI（2027年2月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270311@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年3月6日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270311T083000
+DTEND;TZID=America/New_York:20270311T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年3月6日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:ppi-20270312@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 PPI 生产者物价指数（February 2027）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。常被
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。常被
  视作 CPI 前瞻。来源：https://www.bls.gov/schedule/news_release/ppi
  .htm 2027 日程来源：White House PFEI / BLS。
 DTSTART;TZID=America/New_York:20270312T083000
@@ -1054,6 +1771,23 @@ STATUS:CONFIRMED
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:🇺🇸 PPI 生产者物价指数（February 2027）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:retail-20270316@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国零售销售（2027年2月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。Census
+  提前零售与餐饮销售（Advance Monthly Retail Trade）。来源：https://www.census.gov/retai
+ l/release_schedule.html
+DTSTART;TZID=America/New_York:20270316T083000
+DTEND;TZID=America/New_York:20270316T093000
+CATEGORIES:MACRO,RETAIL
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国零售销售（2027年2月）
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
@@ -1076,6 +1810,40 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:claims-20270318@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年3月13日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270318T083000
+DTEND;TZID=America/New_York:20270318T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年3月13日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270325@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年3月20日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270325T083000
+DTEND;TZID=America/New_York:20270325T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年3月20日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:hol-2027-03-26@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🏖 Good Friday 耶稣受难日（美股休市）
@@ -1087,10 +1855,130 @@ CATEGORIES:HOLIDAY
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
+UID:gdp-20270331-third@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国GDP（2026年Q4终值）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA GD
+ P 终值（GDP (Third Estimate)\, Industries\, Corporate Profits\, State GDP\,
+  and State Personal Income\, 4th Quarter and Year 2026）。来源：https://www.b
+ ea.gov/news/schedule
+DTSTART;TZID=America/New_York:20270331T083000
+DTEND;TZID=America/New_York:20270331T093000
+CATEGORIES:MACRO,GDP
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国GDP（2026年Q4终值）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-20270331@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国PCE（2027年2月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20270331T083000
+DTEND;TZID=America/New_York:20270331T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国PCE（2027年2月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-core-20270331@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国核心PCE（2027年2月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20270331T083000
+DTEND;TZID=America/New_York:20270331T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国核心PCE（2027年2月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270401@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年3月27日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270401T083000
+DTEND;TZID=America/New_York:20270401T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年3月27日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:empsit-20270402@us-market-events
+DTSTAMP:20261125T100026Z
+SUMMARY:🇺🇸 美国非农与失业率（2027年3月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BLS Em
+ ployment Situation（非农就业、失业率）。来源：https://www.bls.gov/schedule/news_releas
+ e/empsit.htm
+DTSTART;TZID=America/New_York:20270402T083000
+DTEND;TZID=America/New_York:20270402T093000
+CATEGORIES:MACRO,EMPLOYMENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国非农与失业率（2027年3月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fomc-minutes-20270317@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🏛️ FOMC 会议纪要（2027年3月决议·暂定）
+DESCRIPTION:美联储官网写明：纪要在政策决定日后三周发布，通常 14:00 ET。此具体日期尚未在 FOMC 日历单独列出，遇假日可能改
+ 期，以 federalreserve.gov 为准。来源：https://www.federalreserve.gov/monetarypoli
+ cy/fomccalendars.htm
+DTSTART;TZID=America/New_York:20270407T140000
+DTEND;TZID=America/New_York:20270407T150000
+CATEGORIES:MACRO,FOMC_MINUTES
+STATUS:TENTATIVE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🏛️ FOMC 会议纪要（2027年3月决议·暂定）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270408@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年4月3日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270408T083000
+DTEND;TZID=America/New_York:20270408T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年4月3日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:cpi-20270413@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 CPI 消费者物价指数（March 2027）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。核心
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。核心
  通胀关键数据，影响加息预期与成长股估值。来源：https
  ://www.bls.gov/schedule/news_release/cpi.htm 2027 日程来源：White Hou
  se PFEI / BLS。
@@ -1105,10 +1993,27 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:cpi-core-20270413@us-market-events
+DTSTAMP:20261125T100026Z
+SUMMARY:🇺🇸 美国核心CPI（2027年3月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。核心 CPI
+  与整体 CPI 同一份 BLS 新闻稿，不单独排期。来源：https://www.bls.gov/schedule/news_release/
+ cpi.htm
+DTSTART;TZID=America/New_York:20270413T083000
+DTEND;TZID=America/New_York:20270413T093000
+CATEGORIES:MACRO,CPI
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国核心CPI（2027年3月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:ppi-20270414@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 PPI 生产者物价指数（March 2027）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。常被
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。常被
  视作 CPI 前瞻。来源：https://www.bls.gov/schedule/news_release/ppi
  .htm 2027 日程来源：White House PFEI / BLS。
 DTSTART;TZID=America/New_York:20270414T083000
@@ -1118,6 +2023,57 @@ STATUS:CONFIRMED
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:🇺🇸 PPI 生产者物价指数（March 2027）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270415@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年4月10日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270415T083000
+DTEND;TZID=America/New_York:20270415T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年4月10日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:retail-20270416@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国零售销售（2027年3月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。Census
+  提前零售与餐饮销售（Advance Monthly Retail Trade）。来源：https://www.census.gov/retai
+ l/release_schedule.html
+DTSTART;TZID=America/New_York:20270416T083000
+DTEND;TZID=America/New_York:20270416T093000
+CATEGORIES:MACRO,RETAIL
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国零售销售（2027年3月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270422@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年4月17日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270422T083000
+DTEND;TZID=America/New_York:20270422T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年4月17日）
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
@@ -1155,10 +2111,112 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:gdp-20270429-advance@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国GDP（2027年Q1初值）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA GD
+ P 初值（GDP (Advance Estimate)\, 1st Quarter 2027）。来源：https://www.bea.gov/n
+ ews/schedule
+DTSTART;TZID=America/New_York:20270429T083000
+DTEND;TZID=America/New_York:20270429T093000
+CATEGORIES:MACRO,GDP
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国GDP（2027年Q1初值）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-20270429@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国PCE（2027年3月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20270429T083000
+DTEND;TZID=America/New_York:20270429T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国PCE（2027年3月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-core-20270429@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国核心PCE（2027年3月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20270429T083000
+DTEND;TZID=America/New_York:20270429T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国核心PCE（2027年3月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270429@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年4月24日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270429T083000
+DTEND;TZID=America/New_York:20270429T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年4月24日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270506@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年5月1日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270506T083000
+DTEND;TZID=America/New_York:20270506T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年5月1日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:empsit-20270507@us-market-events
+DTSTAMP:20261125T100026Z
+SUMMARY:🇺🇸 美国非农与失业率（2027年4月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BLS Em
+ ployment Situation（非农就业、失业率）。来源：https://www.bls.gov/schedule/news_releas
+ e/empsit.htm
+DTSTART;TZID=America/New_York:20270507T083000
+DTEND;TZID=America/New_York:20270507T093000
+CATEGORIES:MACRO,EMPLOYMENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国非农与失业率（2027年4月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:cpi-20270512@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 CPI 消费者物价指数（April 2027）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。核心
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。核心
  通胀关键数据，影响加息预期与成长股估值。来源：https
  ://www.bls.gov/schedule/news_release/cpi.htm 2027 日程来源：White Hou
  se PFEI / BLS。
@@ -1173,10 +2231,27 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:cpi-core-20270512@us-market-events
+DTSTAMP:20261125T100026Z
+SUMMARY:🇺🇸 美国核心CPI（2027年4月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。核心 CPI
+  与整体 CPI 同一份 BLS 新闻稿，不单独排期。来源：https://www.bls.gov/schedule/news_release/
+ cpi.htm
+DTSTART;TZID=America/New_York:20270512T083000
+DTEND;TZID=America/New_York:20270512T093000
+CATEGORIES:MACRO,CPI
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国核心CPI（2027年4月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:ppi-20270513@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 PPI 生产者物价指数（April 2027）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。常被
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。常被
  视作 CPI 前瞻。来源：https://www.bls.gov/schedule/news_release/ppi
  .htm 2027 日程来源：White House PFEI / BLS。
 DTSTART;TZID=America/New_York:20270513T083000
@@ -1190,6 +2265,142 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:claims-20270513@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年5月8日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270513T083000
+DTEND;TZID=America/New_York:20270513T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年5月8日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:retail-20270514@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国零售销售（2027年4月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。Census
+  提前零售与餐饮销售（Advance Monthly Retail Trade）。来源：https://www.census.gov/retai
+ l/release_schedule.html
+DTSTART;TZID=America/New_York:20270514T083000
+DTEND;TZID=America/New_York:20270514T093000
+CATEGORIES:MACRO,RETAIL
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国零售销售（2027年4月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fomc-minutes-20270428@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🏛️ FOMC 会议纪要（2027年4月决议·暂定）
+DESCRIPTION:美联储官网写明：纪要在政策决定日后三周发布，通常 14:00 ET。此具体日期尚未在 FOMC 日历单独列出，遇假日可能改
+ 期，以 federalreserve.gov 为准。来源：https://www.federalreserve.gov/monetarypoli
+ cy/fomccalendars.htm
+DTSTART;TZID=America/New_York:20270519T140000
+DTEND;TZID=America/New_York:20270519T150000
+CATEGORIES:MACRO,FOMC_MINUTES
+STATUS:TENTATIVE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🏛️ FOMC 会议纪要（2027年4月决议·暂定）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270520@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年5月15日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270520T083000
+DTEND;TZID=America/New_York:20270520T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年5月15日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:gdp-20270527-second@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国GDP（2027年Q1修正值）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA GD
+ P 修正值（GDP (Second Estimate) and Corporate Profits\, 1st Quarter 2027）。来源
+ ：https://www.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20270527T083000
+DTEND;TZID=America/New_York:20270527T093000
+CATEGORIES:MACRO,GDP
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国GDP（2027年Q1修正值）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-20270527@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国PCE（2027年4月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20270527T083000
+DTEND;TZID=America/New_York:20270527T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国PCE（2027年4月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-core-20270527@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国核心PCE（2027年4月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20270527T083000
+DTEND;TZID=America/New_York:20270527T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国核心PCE（2027年4月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270527@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年5月22日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270527T083000
+DTEND;TZID=America/New_York:20270527T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年5月22日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:hol-2027-05-31@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🏖 Memorial Day 阵亡将士纪念日（美股休市）
@@ -1199,6 +2410,40 @@ DTSTART;VALUE=DATE:20270531
 DTEND;VALUE=DATE:20270601
 CATEGORIES:HOLIDAY
 STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270603@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年5月29日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270603T083000
+DTEND;TZID=America/New_York:20270603T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年5月29日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:empsit-20270604@us-market-events
+DTSTAMP:20261125T100026Z
+SUMMARY:🇺🇸 美国非农与失业率（2027年5月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BLS Em
+ ployment Situation（非农就业、失业率）。来源：https://www.bls.gov/schedule/news_releas
+ e/empsit.htm
+DTSTART;TZID=America/New_York:20270604T083000
+DTEND;TZID=America/New_York:20270604T093000
+CATEGORIES:MACRO,EMPLOYMENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国非农与失业率（2027年5月）
+TRIGGER:-P1D
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:fomc-20270609@us-market-events
@@ -1222,7 +2467,7 @@ BEGIN:VEVENT
 UID:cpi-20270610@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 CPI 消费者物价指数（May 2027）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。核心
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。核心
  通胀关键数据，影响加息预期与成长股估值。来源：https
  ://www.bls.gov/schedule/news_release/cpi.htm 2027 日程来源：White Hou
  se PFEI / BLS。
@@ -1237,10 +2482,44 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:claims-20270610@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年6月5日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270610T083000
+DTEND;TZID=America/New_York:20270610T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年6月5日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cpi-core-20270610@us-market-events
+DTSTAMP:20261125T100026Z
+SUMMARY:🇺🇸 美国核心CPI（2027年5月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。核心 CPI
+  与整体 CPI 同一份 BLS 新闻稿，不单独排期。来源：https://www.bls.gov/schedule/news_release/
+ cpi.htm
+DTSTART;TZID=America/New_York:20270610T083000
+DTEND;TZID=America/New_York:20270610T093000
+CATEGORIES:MACRO,CPI
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国核心CPI（2027年5月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:ppi-20270611@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 PPI 生产者物价指数（May 2027）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。常被
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。常被
  视作 CPI 前瞻。来源：https://www.bls.gov/schedule/news_release/ppi
  .htm 2027 日程来源：White House PFEI / BLS。
 DTSTART;TZID=America/New_York:20270611T083000
@@ -1250,6 +2529,40 @@ STATUS:CONFIRMED
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:🇺🇸 PPI 生产者物价指数（May 2027）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:retail-20270616@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国零售销售（2027年5月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。Census
+  提前零售与餐饮销售（Advance Monthly Retail Trade）。来源：https://www.census.gov/retai
+ l/release_schedule.html
+DTSTART;TZID=America/New_York:20270616T083000
+DTEND;TZID=America/New_York:20270616T093000
+CATEGORIES:MACRO,RETAIL
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国零售销售（2027年5月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270617@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年6月12日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270617T083000
+DTEND;TZID=America/New_York:20270617T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年6月12日）
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
@@ -1265,6 +2578,126 @@ CATEGORIES:HOLIDAY
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
+UID:claims-20270624@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年6月19日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270624T083000
+DTEND;TZID=America/New_York:20270624T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年6月19日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:gdp-20270625-third@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国GDP（2027年Q1终值）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA GD
+ P 终值（GDP (Third Estimate)\, Industries\, Corporate Profits\, State GDP\,
+  and State Personal Income\, 1st Quarter 2027）。来源：https://www.bea.gov/ne
+ ws/schedule
+DTSTART;TZID=America/New_York:20270625T083000
+DTEND;TZID=America/New_York:20270625T093000
+CATEGORIES:MACRO,GDP
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国GDP（2027年Q1终值）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-20270625@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国PCE（2027年5月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20270625T083000
+DTEND;TZID=America/New_York:20270625T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国PCE（2027年5月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-core-20270625@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国核心PCE（2027年5月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20270625T083000
+DTEND;TZID=America/New_York:20270625T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国核心PCE（2027年5月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fomc-minutes-20270609@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🏛️ FOMC 会议纪要（2027年6月决议·暂定）
+DESCRIPTION:美联储官网写明：纪要在政策决定日后三周发布，通常 14:00 ET。此具体日期尚未在 FOMC 日历单独列出，遇假日可能改
+ 期，以 federalreserve.gov 为准。来源：https://www.federalreserve.gov/monetarypoli
+ cy/fomccalendars.htm
+DTSTART;TZID=America/New_York:20270630T140000
+DTEND;TZID=America/New_York:20270630T150000
+CATEGORIES:MACRO,FOMC_MINUTES
+STATUS:TENTATIVE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🏛️ FOMC 会议纪要（2027年6月决议·暂定）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270701@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年6月26日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270701T083000
+DTEND;TZID=America/New_York:20270701T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年6月26日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:empsit-20270702@us-market-events
+DTSTAMP:20261125T100026Z
+SUMMARY:🇺🇸 美国非农与失业率（2027年6月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BLS Em
+ ployment Situation（非农就业、失业率）。来源：https://www.bls.gov/schedule/news_releas
+ e/empsit.htm
+DTSTART;TZID=America/New_York:20270702T083000
+DTEND;TZID=America/New_York:20270702T093000
+CATEGORIES:MACRO,EMPLOYMENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国非农与失业率（2027年6月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:hol-2027-07-05@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🏖 Independence Day（美股休市·观察日）
@@ -1276,10 +2709,27 @@ CATEGORIES:HOLIDAY
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
+UID:claims-20270708@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年7月3日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270708T083000
+DTEND;TZID=America/New_York:20270708T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年7月3日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:cpi-20270714@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 CPI 消费者物价指数（June 2027）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。核心
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。核心
  通胀关键数据，影响加息预期与成长股估值。来源：https
  ://www.bls.gov/schedule/news_release/cpi.htm 2027 日程来源：White Hou
  se PFEI / BLS。
@@ -1294,10 +2744,27 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:cpi-core-20270714@us-market-events
+DTSTAMP:20261125T100026Z
+SUMMARY:🇺🇸 美国核心CPI（2027年6月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。核心 CPI
+  与整体 CPI 同一份 BLS 新闻稿，不单独排期。来源：https://www.bls.gov/schedule/news_release/
+ cpi.htm
+DTSTART;TZID=America/New_York:20270714T083000
+DTEND;TZID=America/New_York:20270714T093000
+CATEGORIES:MACRO,CPI
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国核心CPI（2027年6月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:ppi-20270715@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 PPI 生产者物价指数（June 2027）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。常被
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。常被
  视作 CPI 前瞻。来源：https://www.bls.gov/schedule/news_release/ppi
  .htm 2027 日程来源：White House PFEI / BLS。
 DTSTART;TZID=America/New_York:20270715T083000
@@ -1307,6 +2774,57 @@ STATUS:CONFIRMED
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:🇺🇸 PPI 生产者物价指数（June 2027）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270715@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年7月10日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270715T083000
+DTEND;TZID=America/New_York:20270715T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年7月10日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:retail-20270716@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国零售销售（2027年6月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。Census
+  提前零售与餐饮销售（Advance Monthly Retail Trade）。来源：https://www.census.gov/retai
+ l/release_schedule.html
+DTSTART;TZID=America/New_York:20270716T083000
+DTEND;TZID=America/New_York:20270716T093000
+CATEGORIES:MACRO,RETAIL
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国零售销售（2027年6月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270722@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年7月17日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270722T083000
+DTEND;TZID=America/New_York:20270722T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年7月17日）
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
@@ -1328,10 +2846,112 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:gdp-20270729-advance@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国GDP（2027年Q2初值）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA GD
+ P 初值（GDP (Advance Estimate)\, 2nd Quarter 2027）。来源：https://www.bea.gov/n
+ ews/schedule
+DTSTART;TZID=America/New_York:20270729T083000
+DTEND;TZID=America/New_York:20270729T093000
+CATEGORIES:MACRO,GDP
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国GDP（2027年Q2初值）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-20270729@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国PCE（2027年6月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20270729T083000
+DTEND;TZID=America/New_York:20270729T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国PCE（2027年6月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-core-20270729@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国核心PCE（2027年6月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20270729T083000
+DTEND;TZID=America/New_York:20270729T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国核心PCE（2027年6月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270729@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年7月24日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270729T083000
+DTEND;TZID=America/New_York:20270729T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年7月24日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270805@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年7月31日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270805T083000
+DTEND;TZID=America/New_York:20270805T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年7月31日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:empsit-20270806@us-market-events
+DTSTAMP:20261125T100026Z
+SUMMARY:🇺🇸 美国非农与失业率（2027年7月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BLS Em
+ ployment Situation（非农就业、失业率）。来源：https://www.bls.gov/schedule/news_releas
+ e/empsit.htm
+DTSTART;TZID=America/New_York:20270806T083000
+DTEND;TZID=America/New_York:20270806T093000
+CATEGORIES:MACRO,EMPLOYMENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国非农与失业率（2027年7月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:ppi-20270810@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 PPI 生产者物价指数（July 2027）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。常被
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。常被
  视作 CPI 前瞻。来源：https://www.bls.gov/schedule/news_release/ppi
  .htm 2027 日程来源：White House PFEI / BLS。
 DTSTART;TZID=America/New_York:20270810T083000
@@ -1348,7 +2968,7 @@ BEGIN:VEVENT
 UID:cpi-20270811@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 CPI 消费者物价指数（July 2027）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。核心
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。核心
  通胀关键数据，影响加息预期与成长股估值。来源：https
  ://www.bls.gov/schedule/news_release/cpi.htm 2027 日程来源：White Hou
  se PFEI / BLS。
@@ -1359,6 +2979,193 @@ STATUS:CONFIRMED
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:🇺🇸 CPI 消费者物价指数（July 2027）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cpi-core-20270811@us-market-events
+DTSTAMP:20261125T100026Z
+SUMMARY:🇺🇸 美国核心CPI（2027年7月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。核心 CPI
+  与整体 CPI 同一份 BLS 新闻稿，不单独排期。来源：https://www.bls.gov/schedule/news_release/
+ cpi.htm
+DTSTART;TZID=America/New_York:20270811T083000
+DTEND;TZID=America/New_York:20270811T093000
+CATEGORIES:MACRO,CPI
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国核心CPI（2027年7月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270812@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年8月7日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270812T083000
+DTEND;TZID=America/New_York:20270812T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年8月7日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:retail-20270816@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国零售销售（2027年7月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。Census
+  提前零售与餐饮销售（Advance Monthly Retail Trade）。来源：https://www.census.gov/retai
+ l/release_schedule.html
+DTSTART;TZID=America/New_York:20270816T083000
+DTEND;TZID=America/New_York:20270816T093000
+CATEGORIES:MACRO,RETAIL
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国零售销售（2027年7月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fomc-minutes-20270728@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🏛️ FOMC 会议纪要（2027年7月决议·暂定）
+DESCRIPTION:美联储官网写明：纪要在政策决定日后三周发布，通常 14:00 ET。此具体日期尚未在 FOMC 日历单独列出，遇假日可能改
+ 期，以 federalreserve.gov 为准。来源：https://www.federalreserve.gov/monetarypoli
+ cy/fomccalendars.htm
+DTSTART;TZID=America/New_York:20270818T140000
+DTEND;TZID=America/New_York:20270818T150000
+CATEGORIES:MACRO,FOMC_MINUTES
+STATUS:TENTATIVE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🏛️ FOMC 会议纪要（2027年7月决议·暂定）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270819@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年8月14日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270819T083000
+DTEND;TZID=America/New_York:20270819T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年8月14日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:gdp-20270825-second@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国GDP（2027年Q2修正值）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA GD
+ P 修正值（GDP (Second Estimate) and Corporate Profits\, 2nd Quarter 2027）。来源
+ ：https://www.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20270825T083000
+DTEND;TZID=America/New_York:20270825T093000
+CATEGORIES:MACRO,GDP
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国GDP（2027年Q2修正值）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-20270825@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国PCE（2027年7月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20270825T083000
+DTEND;TZID=America/New_York:20270825T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国PCE（2027年7月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-core-20270825@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国核心PCE（2027年7月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20270825T083000
+DTEND;TZID=America/New_York:20270825T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国核心PCE（2027年7月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270826@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年8月21日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270826T083000
+DTEND;TZID=America/New_York:20270826T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年8月21日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270902@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年8月28日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270902T083000
+DTEND;TZID=America/New_York:20270902T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年8月28日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:empsit-20270903@us-market-events
+DTSTAMP:20261125T100026Z
+SUMMARY:🇺🇸 美国非农与失业率（2027年8月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BLS Em
+ ployment Situation（非农就业、失业率）。来源：https://www.bls.gov/schedule/news_releas
+ e/empsit.htm
+DTSTART;TZID=America/New_York:20270903T083000
+DTEND;TZID=America/New_York:20270903T093000
+CATEGORIES:MACRO,EMPLOYMENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国非农与失业率（2027年8月）
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
@@ -1374,10 +3181,27 @@ CATEGORIES:HOLIDAY
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
+UID:claims-20270909@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年9月4日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270909T083000
+DTEND;TZID=America/New_York:20270909T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年9月4日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:ppi-20270910@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 PPI 生产者物价指数（August 2027）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。常被
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。常被
  视作 CPI 前瞻。来源：https://www.bls.gov/schedule/news_release/ppi
  .htm 2027 日程来源：White House PFEI / BLS。
 DTSTART;TZID=America/New_York:20270910T083000
@@ -1394,7 +3218,7 @@ BEGIN:VEVENT
 UID:cpi-20270914@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 CPI 消费者物价指数（August 2027）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。核心
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。核心
  通胀关键数据，影响加息预期与成长股估值。来源：https
  ://www.bls.gov/schedule/news_release/cpi.htm 2027 日程来源：White Hou
  se PFEI / BLS。
@@ -1405,6 +3229,23 @@ STATUS:CONFIRMED
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:🇺🇸 CPI 消费者物价指数（August 2027）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cpi-core-20270914@us-market-events
+DTSTAMP:20261125T100026Z
+SUMMARY:🇺🇸 美国核心CPI（2027年8月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。核心 CPI
+  与整体 CPI 同一份 BLS 新闻稿，不单独排期。来源：https://www.bls.gov/schedule/news_release/
+ cpi.htm
+DTSTART;TZID=America/New_York:20270914T083000
+DTEND;TZID=America/New_York:20270914T093000
+CATEGORIES:MACRO,CPI
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国核心CPI（2027年8月）
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
@@ -1427,10 +3268,181 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:retail-20270916@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国零售销售（2027年8月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。Census
+  提前零售与餐饮销售（Advance Monthly Retail Trade）。来源：https://www.census.gov/retai
+ l/release_schedule.html
+DTSTART;TZID=America/New_York:20270916T083000
+DTEND;TZID=America/New_York:20270916T093000
+CATEGORIES:MACRO,RETAIL
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国零售销售（2027年8月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270916@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年9月11日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270916T083000
+DTEND;TZID=America/New_York:20270916T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年9月11日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270923@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年9月18日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270923T083000
+DTEND;TZID=America/New_York:20270923T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年9月18日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:gdp-20270930-third@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国GDP（2027年Q2终值）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA GD
+ P 终值（GDP (Third Estimate)\, Industries\, Corporate Profits\, State GDP\,
+  and State Personal Income\, 2nd Quarter 2027\; State Consumer Spending\
+ , 2026）。来源：https://www.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20270930T083000
+DTEND;TZID=America/New_York:20270930T093000
+CATEGORIES:MACRO,GDP
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国GDP（2027年Q2终值）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-20270930@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国PCE（2027年8月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20270930T083000
+DTEND;TZID=America/New_York:20270930T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国PCE（2027年8月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-core-20270930@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国核心PCE（2027年8月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20270930T083000
+DTEND;TZID=America/New_York:20270930T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国核心PCE（2027年8月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20270930@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年9月25日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20270930T083000
+DTEND;TZID=America/New_York:20270930T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年9月25日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fomc-minutes-20270915@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🏛️ FOMC 会议纪要（2027年9月决议·暂定）
+DESCRIPTION:美联储官网写明：纪要在政策决定日后三周发布，通常 14:00 ET。此具体日期尚未在 FOMC 日历单独列出，遇假日可能改
+ 期，以 federalreserve.gov 为准。来源：https://www.federalreserve.gov/monetarypoli
+ cy/fomccalendars.htm
+DTSTART;TZID=America/New_York:20271006T140000
+DTEND;TZID=America/New_York:20271006T150000
+CATEGORIES:MACRO,FOMC_MINUTES
+STATUS:TENTATIVE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🏛️ FOMC 会议纪要（2027年9月决议·暂定）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20271007@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年10月2日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20271007T083000
+DTEND;TZID=America/New_York:20271007T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年10月2日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:empsit-20271008@us-market-events
+DTSTAMP:20261125T100026Z
+SUMMARY:🇺🇸 美国非农与失业率（2027年9月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BLS Em
+ ployment Situation（非农就业、失业率）。来源：https://www.bls.gov/schedule/news_releas
+ e/empsit.htm
+DTSTART;TZID=America/New_York:20271008T083000
+DTEND;TZID=America/New_York:20271008T093000
+CATEGORIES:MACRO,EMPLOYMENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国非农与失业率（2027年9月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:cpi-20271014@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 CPI 消费者物价指数（September 2027）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。核心
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。核心
  通胀关键数据，影响加息预期与成长股估值。来源：https
  ://www.bls.gov/schedule/news_release/cpi.htm 2027 日程来源：White Hou
  se PFEI / BLS。
@@ -1445,10 +3457,44 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:claims-20271014@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年10月9日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20271014T083000
+DTEND;TZID=America/New_York:20271014T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年10月9日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cpi-core-20271014@us-market-events
+DTSTAMP:20261125T100026Z
+SUMMARY:🇺🇸 美国核心CPI（2027年9月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。核心 CPI
+  与整体 CPI 同一份 BLS 新闻稿，不单独排期。来源：https://www.bls.gov/schedule/news_release/
+ cpi.htm
+DTSTART;TZID=America/New_York:20271014T083000
+DTEND;TZID=America/New_York:20271014T093000
+CATEGORIES:MACRO,CPI
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国核心CPI（2027年9月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:ppi-20271015@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 PPI 生产者物价指数（September 2027）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。常被
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。常被
  视作 CPI 前瞻。来源：https://www.bls.gov/schedule/news_release/ppi
  .htm 2027 日程来源：White House PFEI / BLS。
 DTSTART;TZID=America/New_York:20271015T083000
@@ -1462,19 +3508,155 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:retail-20271015@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国零售销售（2027年9月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。Census
+  提前零售与餐饮销售（Advance Monthly Retail Trade）。来源：https://www.census.gov/retai
+ l/release_schedule.html
+DTSTART;TZID=America/New_York:20271015T083000
+DTEND;TZID=America/New_York:20271015T093000
+CATEGORIES:MACRO,RETAIL
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国零售销售（2027年9月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20271021@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年10月16日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20271021T083000
+DTEND;TZID=America/New_York:20271021T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年10月16日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:fomc-20271027@us-market-events
-DTSTAMP:20261017T100208Z
-SUMMARY:🏦 FOMC 利率决议
-DESCRIPTION:决议约 14:00 ET，发布会约 14:30 ET（北京次日凌晨
- ）。美联储官网 2027 暂定日程。 来源：https://www.federalres
- erve.gov/monetarypolicy/fomccalendars.htm
-DTSTART;TZID=America/New_York:20271027T140000
-DTEND;TZID=America/New_York:20271027T153000
+DTSTAMP:20261125T095932Z
+SUMMARY:🏦 FOMC 策略会议（非利率决议）
+DESCRIPTION:美联储 2027 年日程将 2027-10-27 标为 Monetary Policy Strategy Meeting，
+ 不发布常规利率决议，官网未给出声明钟点，因此记为全天。来源：https://www.federalreserve.gov/monetarypol
+ icy/fomccalendars.htm
+DTSTART;VALUE=DATE:20271027
+DTEND;VALUE=DATE:20271028
 CATEGORIES:MACRO,FOMC
 STATUS:CONFIRMED
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🏦 FOMC 利率决议
+DESCRIPTION:🏦 FOMC 策略会议（非利率决议）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:gdp-20271028-advance@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国GDP（2027年Q3初值）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA GD
+ P 初值（GDP (Advance Estimate)\, 3rd Quarter 2027）。来源：https://www.bea.gov/n
+ ews/schedule
+DTSTART;TZID=America/New_York:20271028T083000
+DTEND;TZID=America/New_York:20271028T093000
+CATEGORIES:MACRO,GDP
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国GDP（2027年Q3初值）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-20271028@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国PCE（2027年9月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20271028T083000
+DTEND;TZID=America/New_York:20271028T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国PCE（2027年9月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-core-20271028@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国核心PCE（2027年9月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20271028T083000
+DTEND;TZID=America/New_York:20271028T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国核心PCE（2027年9月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20271028@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年10月23日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20271028T083000
+DTEND;TZID=America/New_York:20271028T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年10月23日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20271104@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年10月30日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20271104T083000
+DTEND;TZID=America/New_York:20271104T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年10月30日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:empsit-20271105@us-market-events
+DTSTAMP:20261125T100026Z
+SUMMARY:🇺🇸 美国非农与失业率（2027年10月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BLS Em
+ ployment Situation（非农就业、失业率）。来源：https://www.bls.gov/schedule/news_releas
+ e/empsit.htm
+DTSTART;TZID=America/New_York:20271105T083000
+DTEND;TZID=America/New_York:20271105T093000
+CATEGORIES:MACRO,EMPLOYMENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国非农与失业率（2027年10月）
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
@@ -1482,7 +3664,7 @@ BEGIN:VEVENT
 UID:cpi-20271110@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 CPI 消费者物价指数（October 2027）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。核心
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。核心
  通胀关键数据，影响加息预期与成长股估值。来源：https
  ://www.bls.gov/schedule/news_release/cpi.htm 2027 日程来源：White Hou
  se PFEI / BLS。
@@ -1497,10 +3679,27 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:cpi-core-20271110@us-market-events
+DTSTAMP:20261125T100026Z
+SUMMARY:🇺🇸 美国核心CPI（2027年10月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。核心 CPI
+  与整体 CPI 同一份 BLS 新闻稿，不单独排期。来源：https://www.bls.gov/schedule/news_release/
+ cpi.htm
+DTSTART;TZID=America/New_York:20271110T083000
+DTEND;TZID=America/New_York:20271110T093000
+CATEGORIES:MACRO,CPI
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国核心CPI（2027年10月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:ppi-20271112@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 PPI 生产者物价指数（October 2027）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。常被
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。常被
  视作 CPI 前瞻。来源：https://www.bls.gov/schedule/news_release/ppi
  .htm 2027 日程来源：White House PFEI / BLS。
 DTSTART;TZID=America/New_York:20271112T083000
@@ -1510,6 +3709,107 @@ STATUS:CONFIRMED
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:🇺🇸 PPI 生产者物价指数（October 2027）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:retail-20271116@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国零售销售（2027年10月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。Census
+  提前零售与餐饮销售（Advance Monthly Retail Trade）。来源：https://www.census.gov/retai
+ l/release_schedule.html
+DTSTART;TZID=America/New_York:20271116T083000
+DTEND;TZID=America/New_York:20271116T093000
+CATEGORIES:MACRO,RETAIL
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国零售销售（2027年10月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fomc-20271117@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🏦 FOMC 利率决议
+DESCRIPTION:决议通常 14:00 ET，发布会约 14:30 ET。日期在前一次会议确认前，美联储仍标为暂定。来源：https://w
+ ww.federalreserve.gov/monetarypolicy/fomccalendars.htm
+DTSTART;TZID=America/New_York:20271117T140000
+DTEND;TZID=America/New_York:20271117T153000
+CATEGORIES:MACRO,FOMC
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🏦 FOMC 利率决议
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20271118@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年11月13日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20271118T083000
+DTEND;TZID=America/New_York:20271118T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年11月13日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:gdp-20271124-second@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国GDP（2027年Q3修正值）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA GD
+ P 修正值（GDP (Second Estimate) and Corporate Profits\, 3rd Quarter 2027）。来源
+ ：https://www.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20271124T083000
+DTEND;TZID=America/New_York:20271124T093000
+CATEGORIES:MACRO,GDP
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国GDP（2027年Q3修正值）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-20271124@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国PCE（2027年10月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20271124T083000
+DTEND;TZID=America/New_York:20271124T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国PCE（2027年10月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-core-20271124@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国核心PCE（2027年10月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20271124T083000
+DTEND;TZID=America/New_York:20271124T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国核心PCE（2027年10月）
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
@@ -1536,20 +3836,81 @@ CATEGORIES:HOLIDAY
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
-UID:fomc-20271208@us-market-events
-DTSTAMP:20261017T100208Z
-SUMMARY:🏦 FOMC 利率决议
-DESCRIPTION:决议约 14:00 ET，发布会约 14:30 ET（北京次日凌晨
- ）。含 SEP/点阵图与主席发布会。美联储官网 2027 暂定日
- 程。 来源：https://www.federalreserve.gov/monetarypolicy/fomccalendar
- s.htm
-DTSTART;TZID=America/New_York:20271208T140000
-DTEND;TZID=America/New_York:20271208T153000
-CATEGORIES:MACRO,FOMC
+UID:claims-20271202@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年11月27日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20271202T083000
+DTEND;TZID=America/New_York:20271202T093000
+CATEGORIES:MACRO,CLAIMS
 STATUS:CONFIRMED
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:🏦 FOMC 利率决议
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年11月27日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:empsit-20271203@us-market-events
+DTSTAMP:20261125T100026Z
+SUMMARY:🇺🇸 美国非农与失业率（2027年11月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BLS Em
+ ployment Situation（非农就业、失业率）。来源：https://www.bls.gov/schedule/news_releas
+ e/empsit.htm
+DTSTART;TZID=America/New_York:20271203T083000
+DTEND;TZID=America/New_York:20271203T093000
+CATEGORIES:MACRO,EMPLOYMENT
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国非农与失业率（2027年11月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fomc-20271208@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🏦 FOMC 利率决议（已取消·日程已修订）
+DESCRIPTION:美联储现行 2027 年 FOMC 日历已不含 2027-12-08。保留本条是为了让已订阅的日历撤下旧决议，而不是另建一
+ 场会议。来源：https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm
+DTSTART;TZID=America/New_York:20271208T140000
+DTEND;TZID=America/New_York:20271208T153000
+CATEGORIES:MACRO,FOMC
+STATUS:CANCELLED
+END:VEVENT
+BEGIN:VEVENT
+UID:fomc-minutes-20271117@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🏛️ FOMC 会议纪要（2027年11月决议·暂定）
+DESCRIPTION:美联储官网写明：纪要在政策决定日后三周发布，通常 14:00 ET。此具体日期尚未在 FOMC 日历单独列出，遇假日可能改
+ 期，以 federalreserve.gov 为准。来源：https://www.federalreserve.gov/monetarypoli
+ cy/fomccalendars.htm
+DTSTART;TZID=America/New_York:20271208T140000
+DTEND;TZID=America/New_York:20271208T150000
+CATEGORIES:MACRO,FOMC_MINUTES
+STATUS:TENTATIVE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🏛️ FOMC 会议纪要（2027年11月决议·暂定）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20271209@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年12月4日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20271209T083000
+DTEND;TZID=America/New_York:20271209T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年12月4日）
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
@@ -1557,7 +3918,7 @@ BEGIN:VEVENT
 UID:cpi-20271210@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 CPI 消费者物价指数（November 2027）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。核心
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。核心
  通胀关键数据，影响加息预期与成长股估值。来源：https
  ://www.bls.gov/schedule/news_release/cpi.htm 2027 日程来源：White Hou
  se PFEI / BLS。
@@ -1572,10 +3933,27 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:cpi-core-20271210@us-market-events
+DTSTAMP:20261125T100026Z
+SUMMARY:🇺🇸 美国核心CPI（2027年11月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。核心 CPI
+  与整体 CPI 同一份 BLS 新闻稿，不单独排期。来源：https://www.bls.gov/schedule/news_release/
+ cpi.htm
+DTSTART;TZID=America/New_York:20271210T083000
+DTEND;TZID=America/New_York:20271210T093000
+CATEGORIES:MACRO,CPI
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国核心CPI（2027年11月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:ppi-20271215@us-market-events
 DTSTAMP:20261017T100208Z
 SUMMARY:🇺🇸 PPI 生产者物价指数（November 2027）
-DESCRIPTION:BLS 官方发布时间 08:30 ET（北京约 20:30）。常被
+DESCRIPTION:BLS 官方发布时间 08:30 ET（夏令时北京时间 20:30，冬令时 21:30）。常被
  视作 CPI 前瞻。来源：https://www.bls.gov/schedule/news_release/ppi
  .htm 2027 日程来源：White House PFEI / BLS。
 DTSTART;TZID=America/New_York:20271215T083000
@@ -1585,6 +3963,109 @@ STATUS:CONFIRMED
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:🇺🇸 PPI 生产者物价指数（November 2027）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:retail-20271215@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国零售销售（2027年11月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。Census
+  提前零售与餐饮销售（Advance Monthly Retail Trade）。来源：https://www.census.gov/retai
+ l/release_schedule.html
+DTSTART;TZID=America/New_York:20271215T083000
+DTEND;TZID=America/New_York:20271215T093000
+CATEGORIES:MACRO,RETAIL
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国零售销售（2027年11月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20271216@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年12月11日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20271216T083000
+DTEND;TZID=America/New_York:20271216T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年12月11日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:gdp-20271222-third@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国GDP（2027年Q3终值）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA GD
+ P 终值（GDP (Third Estimate)\, Industries\, Corporate Profits\, State GDP\,
+  and State Personal Income\, 3rd Quarter 2027）。来源：https://www.bea.gov/ne
+ ws/schedule
+DTSTART;TZID=America/New_York:20271222T083000
+DTEND;TZID=America/New_York:20271222T093000
+CATEGORIES:MACRO,GDP
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国GDP（2027年Q3终值）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-20271222@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国PCE（2027年11月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20271222T083000
+DTEND;TZID=America/New_York:20271222T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国PCE（2027年11月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pce-core-20271222@us-market-events
+DTSTAMP:20261125T095931Z
+SUMMARY:🇺🇸 美国核心PCE（2027年11月）
+DESCRIPTION:官方发布时间 08:30 America/New_York（夏令时北京时间 20:30，冬令时 21:30）。BEA《Pe
+ rsonal Income and Outlays》。PCE 与核心 PCE 同一份新闻稿，核心 PCE 不单独排期。来源：https://ww
+ w.bea.gov/news/schedule
+DTSTART;TZID=America/New_York:20271222T083000
+DTEND;TZID=America/New_York:20271222T093000
+CATEGORIES:MACRO,PCE
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国核心PCE（2027年11月）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:claims-20271223@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年12月18日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20271223T083000
+DTEND;TZID=America/New_York:20271223T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年12月18日）
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
@@ -1600,6 +4081,23 @@ CATEGORIES:HOLIDAY
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
+UID:claims-20271230@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🇺🇸 美国初请失业金（截至2027年12月25日）
+DESCRIPTION:日期按劳工部常规规则推算，不是逐周预先公布的日程：最新 Unemployment Insurance Weekly Cla
+ ims 新闻稿写明 embargo until 8:30 a.m. (Eastern) Thursday。周四恰逢联邦假日时劳工部会改期，但未提
+ 前公布具体日期，该周不写入。来源：https://www.dol.gov/ui/data.pdf
+DTSTART;TZID=America/New_York:20271230T083000
+DTEND;TZID=America/New_York:20271230T093000
+CATEGORIES:MACRO,CLAIMS
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🇺🇸 美国初请失业金（截至2027年12月25日）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:fomc-20280126@us-market-events
 DTSTAMP:20261121T101124Z
 SUMMARY:🏛️ FOMC 利率决议（2028-01-26）
@@ -1612,6 +4110,23 @@ STATUS:CONFIRMED
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:🏛️ FOMC 利率决议（2028-01-26）
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fomc-minutes-20280126@us-market-events
+DTSTAMP:20261125T095932Z
+SUMMARY:🏛️ FOMC 会议纪要（2028年1月决议·暂定）
+DESCRIPTION:美联储官网写明：纪要在政策决定日后三周发布，通常 14:00 ET。此具体日期尚未在 FOMC 日历单独列出，遇假日可能改
+ 期，以 federalreserve.gov 为准。来源：https://www.federalreserve.gov/monetarypoli
+ cy/fomccalendars.htm
+DTSTART;TZID=America/New_York:20280216T140000
+DTEND;TZID=America/New_York:20280216T150000
+CATEGORIES:MACRO,FOMC_MINUTES
+STATUS:TENTATIVE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🏛️ FOMC 会议纪要（2028年1月决议·暂定）
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT

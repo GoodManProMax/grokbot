@@ -1272,7 +1272,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:earnings-aapl-20270127@us-market-events
-DTSTAMP:20261121T101124Z
+DTSTAMP:20261128T105150Z
 SUMMARY:📈 AAPL 财报（盘后·Finnhub）
 DESCRIPTION:Finnhub earnings calendar；请以公司 IR 公告为准。symbol=AAPL date=2027-
  01-27 hour=n/a
@@ -2096,7 +2096,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:earnings-aapl-20270428@us-market-events
-DTSTAMP:20261121T101124Z
+DTSTAMP:20261128T105150Z
 SUMMARY:📈 AAPL 财报（盘后·Finnhub）
 DESCRIPTION:Finnhub earnings calendar；请以公司 IR 公告为准。symbol=AAPL date=2027-
  04-28 hour=n/a
